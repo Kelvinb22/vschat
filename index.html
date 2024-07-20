@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vídeo de Fundo Responsivo com Som</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Impede que a barra de rolagem apareça */
+    }
+    #video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Coloca o vídeo atrás de todo o conteúdo */
+        object-fit: cover; /* Mantém a proporção e corta o vídeo para ajustar ao contêiner */
+    }
+    .content {
+        position: relative;
+        z-index: 1; /* Coloca o conteúdo sobre o vídeo */
+        text-align: center;
+        padding: 50px;
+        color: white;
+        font-size: 24px;
+    }
+    @media (max-width: 768px) {
+        .content {
+            font-size: 18px; /* Ajusta o tamanho da fonte para dispositivos menores */
+        }
+    }
+</style>
+<!-- Scripts do Botpress -->
+<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script src="https://mediafiles.botpress.cloud/f319ea3a-cbf1-49c1-9a4c-fc0b76848511/webchat/config.js" defer></script>
+</head>
+<body>
+    <video autoplay muted loop id="video-background">
+        <source src="https://firebasestorage.googleapis.com/v0/b/kelvinconnect-c9799.appspot.com/o/0720.mp4?alt=media&token=c6159533-1875-4bd8-867b-7682215d67a2" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+        <!-- Conteúdo vazio conforme solicitado -->
+        <h1></h1>
+        <p></p>
+        <p></p>
+        <button id="playButton">Clique Para Reproduzir O Som</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById('video-background');
+            var playButton = document.getElementById('playButton');
+
+            playButton.addEventListener('click', function() {
+                video.muted = false;
+                video.play();
+                playButton.style.display = 'none'; // Esconde o botão após o clique
+            });
+        });
+    </script>
+</body>
+</html>
